@@ -233,26 +233,14 @@ void analysisClass::Loop()
    }
 
 
-TH1F* h_CEMF_test1 = new TH1F("h_CEMF_test1", "h_CEMF_test1", 50, 0, 1.0);
+   TH1F* h_CEMF_test1 = new TH1F("h_CEMF_test1", "h_CEMF_test1", 50, 0, 1.0);
    // h_CEMF_test1->Sumw2(); 
 
    TH1F* h_CEMF_test2 = new TH1F("h_CEMF_test2", "h_CEMF_test2", 50, 0, 1.0);
 
-   //book histos for btagged analysis
-   TH1F* h_mjj_btag0_m = new TH1F("h_mjj_btag0_m","h_mjj_btag0_m",10000,0,10000);
-   TH1F* h_mjj_btag1_m = new TH1F("h_mjj_btag1_m","h_mjj_btag1_m",10000,0,10000);
-   TH1F* h_mjj_btag2_m = new TH1F("h_mjj_btag2_m","h_mjj_btag2_m",10000,0,10000);
-   TH1F* h_mjj_btag0_t = new TH1F("h_mjj_btag0_t","h_mjj_btag0_t",10000,0,10000);
-   TH1F* h_mjj_btag1_t = new TH1F("h_mjj_btag1_t","h_mjj_btag1_t",10000,0,10000);
-   TH1F* h_mjj_btag2_t = new TH1F("h_mjj_btag2_t","h_mjj_btag2_t",10000,0,10000);
-   TH1F* h_mjj_btag0_mt = new TH1F("h_mjj_btag0_mt","h_mjj_btag0_mt",10000,0,10000);
-   TH1F* h_mjj_btag1_mt = new TH1F("h_mjj_btag1_mt","h_mjj_btag1_mt",10000,0,10000);
-   TH1F* h_mjj_btag2_mt = new TH1F("h_mjj_btag2_mt","h_mjj_btag2_mt",10000,0,10000);
-
   
 
    /////////initialize variables
-
    Long64_t nentries = fChain->GetEntriesFast();
    std::cout << "analysisClass::Loop(): nentries = " << nentries << std::endl;   
 
@@ -741,16 +729,16 @@ TH1F* h_CEMF_test1 = new TH1F("h_CEMF_test1", "h_CEMF_test1", 50, 0, 1.0);
        fillVariableWithValue("passHLT_PFJet550",triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second));
      if( NtriggerBits > 7 && isData)
        fillVariableWithValue("passHLT_Mu50",triggerResult->at(triggerMap_.find("HLT_Mu50_v*")->second));
-     if( NtriggerBits > 8 && isData)
-       fillVariableWithValue("passHLT_AK8PFJet320",triggerResult->at(triggerMap_.find("HLT_AK8PFJet320_v*")->second));
-     if( NtriggerBits > 9 && isData)
-       fillVariableWithValue("passHLT_AK8PFJet400",triggerResult->at(triggerMap_.find("HLT_AK8PFJet400_v*")->second));
-     if( NtriggerBits > 10 && isData)
-       fillVariableWithValue("passHLT_AK8PFJet450",triggerResult->at(triggerMap_.find("HLT_AK8PFJet450_v*")->second));
-     if( NtriggerBits > 11 && isData)
-       fillVariableWithValue("passHLT_AK8PFJet500",triggerResult->at(triggerMap_.find("HLT_AK8PFJet500_v*")->second));
-     if( NtriggerBits > 12 && isData)
-       fillVariableWithValue("passHLT_AK8PFJet550",triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second));
+     // if( NtriggerBits > 8 && isData)
+     //   fillVariableWithValue("passHLT_AK8PFJet320",triggerResult->at(triggerMap_.find("HLT_AK8PFJet320_v*")->second));
+     // if( NtriggerBits > 9 && isData)
+     //   fillVariableWithValue("passHLT_AK8PFJet400",triggerResult->at(triggerMap_.find("HLT_AK8PFJet400_v*")->second));
+     // if( NtriggerBits > 10 && isData)
+     //   fillVariableWithValue("passHLT_AK8PFJet450",triggerResult->at(triggerMap_.find("HLT_AK8PFJet450_v*")->second));
+     // if( NtriggerBits > 11 && isData)
+     //   fillVariableWithValue("passHLT_AK8PFJet500",triggerResult->at(triggerMap_.find("HLT_AK8PFJet500_v*")->second));
+     // if( NtriggerBits > 12 && isData)
+     //   fillVariableWithValue("passHLT_AK8PFJet550",triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second));
      if( NtriggerBits > 13 && isData)
        fillVariableWithValue("passHLT_CaloJet500_NoJetID",triggerResult->at(triggerMap_.find("HLT_CaloJet500_NoJetID_v*")->second));
      if( NtriggerBits > 14 && isData)
@@ -779,8 +767,8 @@ TH1F* h_CEMF_test1 = new TH1F("h_CEMF_test1", "h_CEMF_test1", 50, 0, 1.0);
      if (fullAnalysis)
        {
 	 h_mjj_HLTpass[0] -> Fill(MJJWide); //noTrig
-h_CEMF_test1->Fill(jetCemfAK4->at(sortedJetIdx[0]));
-h_CEMF_test2->Fill(jetCemfAK4->at(sortedJetIdx[1]));
+	 h_CEMF_test1->Fill(jetCemfAK4->at(sortedJetIdx[0]));
+	 h_CEMF_test2->Fill(jetCemfAK4->at(sortedJetIdx[1]));
 	 if(isData && triggerResult->size()>10) // only run on data 
         // cout << " NtriggerBits is " <<  NtriggerBits << " isData 2 " << isData  << endl;
  
@@ -795,9 +783,9 @@ h_CEMF_test2->Fill(jetCemfAK4->at(sortedJetIdx[1]));
 	 int njetsm = 0;
 	 int njetst = 0;
 	 
-	 double evtWeightBtagM = 1.;
-	 double evtWeightBtagT = 1.;
-	 double evtWeightBtagMT = 1.;
+	 double evtWeightBtagM[] = {1., 1., 1.};
+	 double evtWeightBtagT[] = {1., 1., 1.};
+	 double evtWeightBtagMT[] = {1., 1., 1.};
 
 	 int nExpBtag = 0;
 
@@ -870,55 +858,24 @@ h_CEMF_test2->Fill(jetCemfAK4->at(sortedJetIdx[1]));
 
 
 	 if(!isData)
-	   {
-	     if(hFlavourAK4->at(sortedJetIdx[0]) == 5)
-	       ++nExpBtag;
-	     if(hFlavourAK4->at(sortedJetIdx[1]) == 5)
-	       ++nExpBtag;
-
-	     evtWeightBtagM = bTagEventWeight(SFAK4M, nExpBtag);
-	     evtWeightBtagT = bTagEventWeight(SFAK4T, nExpBtag);
-	     evtWeightBtagMT = bTagEventWeight(SFAK4MT, nExpBtag);
-	   }
-
-
-	 //fill histos in categories and save branches
-	 double MJJWide_M =  MJJWide * evtWeightBtagM;
-	 double MJJWide_T =  MJJWide * evtWeightBtagT;
-	 double MJJWide_MT =  MJJWide * evtWeightBtagMT;
-
-	 if (njetsm == 1)
-	   h_mjj_btag1_m->Fill(MJJWide_M);
-	 else if (njetsm == 2)
-	   h_mjj_btag2_m->Fill(MJJWide_M);
-	 else
-	   h_mjj_btag0_m->Fill(MJJWide_M);
-
-	 if (njetst == 1)
-	   h_mjj_btag1_t->Fill(MJJWide_T);
-	 else if (njetst == 2)
-	   h_mjj_btag2_t->Fill(MJJWide_T);
-	 else
-	   h_mjj_btag0_t->Fill(MJJWide_T);
-
-	 if (njetsm == 2 && njetst==1)
-	   {
-	     h_mjj_btag2_mt->Fill(MJJWide_MT);
-	     if(isData && triggerResult->size()>10) // only run on data  
-	       fillTriggerPlots(h_mjj_HLTpass_bb,MJJWide);
-	   }
-	 else if (njetst==1)
-	   h_mjj_btag1_mt->Fill(MJJWide_MT);
-	 else
-	   h_mjj_btag0_mt->Fill(MJJWide_MT);
-
-
+	   for(int nCat = 0; nCat<3; ++nCat)
+	     {
+	       evtWeightBtagM[nCat]  = bTagEventWeight(SFAK4M, nCat);
+	       evtWeightBtagT[nCat]  = bTagEventWeight(SFAK4T, nCat);
+	       evtWeightBtagMT[nCat] = bTagEventWeight(SFAK4MT, nCat);
+	     }
 
 	 fillVariableWithValue("nBjets_m",njetsm);
 	 fillVariableWithValue("nBjets_t",njetst);
-	 fillVariableWithValue("evtBweight_m",evtWeightBtagM);
-	 fillVariableWithValue("evtBweight_t",evtWeightBtagT);
-	 fillVariableWithValue("evtBweight_mt",evtWeightBtagMT);
+	 fillVariableWithValue("evtBweight_m_cat0",evtWeightBtagM[0]);
+	 fillVariableWithValue("evtBweight_m_cat1",evtWeightBtagM[1]);
+	 fillVariableWithValue("evtBweight_m_cat2",evtWeightBtagM[2]);
+	 fillVariableWithValue("evtBweight_t_cat0",evtWeightBtagT[0]);
+	 fillVariableWithValue("evtBweight_t_cat1",evtWeightBtagT[1]);
+	 fillVariableWithValue("evtBweight_t_cat2",evtWeightBtagT[2]);
+	 fillVariableWithValue("evtBweight_mt_cat0",evtWeightBtagMT[0]);
+	 fillVariableWithValue("evtBweight_mt_cat1",evtWeightBtagMT[1]);
+	 fillVariableWithValue("evtBweight_mt_cat2",evtWeightBtagMT[2]);
 	 
 
 
@@ -982,18 +939,8 @@ h_CEMF_test2->Fill(jetCemfAK4->at(sortedJetIdx[1]));
      h_mjj_HLTpass_bb[i]->Write();
    }
 
-   //write histos for btagged analysis
-   h_mjj_btag0_m->Write();
-   h_mjj_btag1_m->Write();
-   h_mjj_btag2_m->Write();
-   h_mjj_btag0_t->Write();
-   h_mjj_btag1_t->Write();
-   h_mjj_btag2_t->Write();
-   h_mjj_btag0_mt->Write();
-   h_mjj_btag1_mt->Write();
-   h_mjj_btag2_mt->Write();
-h_CEMF_test1->Write();
-h_CEMF_test2->Write();
+   h_CEMF_test1->Write();
+   h_CEMF_test2->Write();
 
    // h_nVtx->Write();
    // h_trueVtx->Write();
@@ -1091,7 +1038,7 @@ if(triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second)) h_mjj_HLTpass
 
 if(triggerResult->at(triggerMap_.find("HLT_Mu50_v*")->second)) h_mjj_HLTpass[3] -> Fill(MJJWide);
 
-if(triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second)) h_mjj_HLTpass[4] -> Fill(MJJWide);
+//if(triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second)) h_mjj_HLTpass[4] -> Fill(MJJWide);
 if(triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)) h_mjj_HLTpass[5] -> Fill(MJJWide);
 
 
@@ -1116,61 +1063,60 @@ triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
 
 
 //or of expected unprescaled triggers
-if ( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
-triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
+ // if ( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
+ //      triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
+ //      triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
+ //      triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second))
+ //   h_mjj_HLTpass[6] -> Fill(MJJWide);
+ 
+ 
+
+// if(triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
+// triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
        
-     )  h_mjj_HLTpass[6] -> Fill(MJJWide);
+//      )) h_mjj_HLTpass[7] -> Fill(MJJWide);
 
 
 
-if(triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
-triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
+// if(triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
+// triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
        
-     )) h_mjj_HLTpass[7] -> Fill(MJJWide);
+//      )) h_mjj_HLTpass[8] -> Fill(MJJWide);
 
 
 
-if(triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
-triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
+// if(triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) &&!(
+//        triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
+// triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
        
-     )) h_mjj_HLTpass[8] -> Fill(MJJWide);
+//      ) ) h_mjj_HLTpass[9] -> Fill(MJJWide);
 
 
-
-if(triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) &&!(
-       triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
-triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
+// if(triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second)
        
-     ) ) h_mjj_HLTpass[9] -> Fill(MJJWide);
+//      ) ) h_mjj_HLTpass[10] -> Fill(MJJWide);
 
-
-if(triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second) &&!( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second)
+// if ( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) 
        
-     ) ) h_mjj_HLTpass[10] -> Fill(MJJWide);
+//      )  h_mjj_HLTpass[11] -> Fill(MJJWide);
 
-if ( triggerResult->at(triggerMap_.find("HLT_AK8PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) 
+// if ( 
+//        triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) 
+//      )  h_mjj_HLTpass[12] -> Fill(MJJWide);
+
+
+// if ( 
+//        triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
+// triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
        
-     )  h_mjj_HLTpass[11] -> Fill(MJJWide);
-
-if ( 
-       triggerResult->at(triggerMap_.find("HLT_PFJet550_v*")->second) ||
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) 
-     )  h_mjj_HLTpass[12] -> Fill(MJJWide);
-
-
-if ( 
-       triggerResult->at(triggerMap_.find("HLT_PFHT1050_v*")->second) ||
-triggerResult->at(triggerMap_.find("HLT_CaloJet550_NoJetID_v*")->second)
-       
-     )  h_mjj_HLTpass[13] -> Fill(MJJWide);
+//      )  h_mjj_HLTpass[13] -> Fill(MJJWide);
 
 
 

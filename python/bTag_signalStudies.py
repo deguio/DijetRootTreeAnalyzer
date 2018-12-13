@@ -163,17 +163,17 @@ def bookAndFill(mass,sample,flavour):
         hDict["h_mass_passed"].Fill(tchain.mjj)
         
         if tchain.nBjets_m == 0:
-            #hDict["h_mass_passed_0b"].Fill(tchain.mjj,tchain.evtBweight_m)
-            hDict["h_mass_passed_0b"].Fill(tchain.mjj)
-            hDict["h_weight_0b"].Fill(tchain.evtBweight_m)
+            hDict["h_mass_passed_0b"].Fill(tchain.mjj,tchain.evtBweight_m_cat0)
+            #hDict["h_mass_passed_0b"].Fill(tchain.mjj)
+            hDict["h_weight_0b"].Fill(tchain.evtBweight_m_cat0)
         elif tchain.nBjets_m == 1:
-            #hDict["h_mass_passed_1b"].Fill(tchain.mjj,tchain.evtBweight_m)
-            hDict["h_mass_passed_1b"].Fill(tchain.mjj)
-            hDict["h_weight_1b"].Fill(tchain.evtBweight_m)
+            hDict["h_mass_passed_1b"].Fill(tchain.mjj,tchain.evtBweight_m_cat1)
+            #hDict["h_mass_passed_1b"].Fill(tchain.mjj)
+            hDict["h_weight_1b"].Fill(tchain.evtBweight_m_cat1)
         elif tchain.nBjets_m == 2:
-            #hDict["h_mass_passed_2b"].Fill(tchain.mjj,tchain.evtBweight_m)
-            hDict["h_mass_passed_2b"].Fill(tchain.mjj)
-            hDict["h_weight_2b"].Fill(tchain.evtBweight_m)
+            hDict["h_mass_passed_2b"].Fill(tchain.mjj,tchain.evtBweight_m_cat2)
+            #hDict["h_mass_passed_2b"].Fill(tchain.mjj)
+            hDict["h_weight_2b"].Fill(tchain.evtBweight_m_cat2)
             
 
     return hDict
